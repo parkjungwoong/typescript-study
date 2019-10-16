@@ -23,8 +23,28 @@ i = 1;//var는 가능
 for(let j=0; j<10; j++) {
 
 }
-
 //j=1; 접근 불가
+
+/**
+ * const, readonly
+ */
+
+const constVal: string = 'const';
+//constVal = '1'; 할당 불가
+const constObj: any = {a:'', b:''};
+constObj.a = 1; //가능
+//프로퍼티까지 변경 불가 쓸려면 readonly
+const constObj2 = {} as {readonly a:'', b:''};
+//constObj2.a = 'a'; 할당 불가
+
+/**
+ * 형 변환 Type assertions
+ */
+let someValue: any = "this is a string";
+
+//2가지 방법이 있음
+let strLength: number = (<string>someValue).length;
+let strLength2: number = (someValue as string).length;
 
 /**
  * 비구조화
