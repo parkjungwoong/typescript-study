@@ -81,6 +81,32 @@ tsc 파일명
     
     함에서 값을 넘길때도 Call By Reference 로 동작, 함수 내에서 값 변경시 전달값도 변경되니 주의
     ```
+#### 실행 컨텍스트
+- 실행 가능한 자바스크립트 코드 블록이 실행되는 환경이다.
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile10.uf.tistory.com%2Fimage%2F2353AF4257E48696136CF7" height="30%">
+- 실행 컨텍스트의 생성 순서
+    1. 활성 객체 생성
+    2. arguments 객체 생성
+    3. 스코프 정보 생성
+    4. 변수 생성, undefined, function, 등으로 초기화됨
+    5. this 바인딩
+    6. 코드 실행
+
+#### 스코프
+- 변수와 함수를 접근할 수 있는 유효 범위, 스코프 단위는 오직 함수만이다. for, if와 같은 블록은 스코프 범위가 아니다.
+- 함수 실행 컨텍스트 내 연결리스트형식으로 관리되며 scope 프로퍼티로 있다.
+```
+// 함수를 호출한 경우 var name = 'oppa'; 
+function say() { 
+    var name = 'coding'; 
+    console.log(name); // 'coding' 
+} 
+say(); 
+console.log(name); // 'oppa'
+
+//첫 번째 객체에서 대응되는 프로퍼티를 발견하지 못한다면, 다음 객체로 이동하는 식으로 찾을 때가지 계속된다.(= 스코프 체이닝)
+```
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile30.uf.tistory.com%2Fimage%2F2231714557E7E359208A75" height="30%">
 
 ### 함수
 #### 특징
@@ -99,20 +125,31 @@ tsc 파일명
     - constructor 프로퍼티는 함수의 주소를 갖고 있다.
     - 함수의 prototype는 prototype객체의 주소를 갖고 있다. 즉 서로의 주소를 갖고 있음
     - 모든 객체의 부모를 나타내는 내부 프로퍼티인 Prototype과 다른 것이다.
+    <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile26.uf.tistory.com%2Fimage%2F253B003457DF7238090D52" height="30%">
 - 
-
-
 #### 함수호이스팅
+- 함수 선언 위치에 상관없이 유효범위내에서 함수의 호출이 가능하다.
+```
+console.log(sum(10, 10)); // 20 
+// 함수 선언문 방식 
+function sum(num1, num2) 
+{ return sum1 + sum2; }
+```
+- 이유는 실행 컨텍스트의 생성 순서 때문이다.\
+    1. 활성 객체 생성
+    2. arguments 객체 생성
+    3. 스코프 정보 생성
+    4. *변수 생성* -> 이 때 이미 함수가 등록된다.
+    5. this 바인딩
+    6. 코드 실행
  
 ### this
 - 객체의 메소드 호출: 해당 메소드를 호출한 객체
 - 함수를 호출: 전역 객체, window와 같은 객체
 - 생성자 함수를 호출: 새로 생성되는 객체
 - 주의
-    - 내부 함수에서 this 호출시 전역 객체로 할당된다.\
+    - 내부 함수에서 this 호출시 전역 객체로 할당된다.
     <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile3.uf.tistory.com%2Fimage%2F250EF73C57E33E18233B83" height="30%">
-
-
 
 ### 용어
 - 일급 객체
@@ -129,6 +166,15 @@ tsc 파일명
 - 부동 소수점
     - 표현 범위 : 
     - 값을 정확하게 표현 가능한가?
+
+- 프로토타입 체이닝
+    - 자신의 프로퍼티 외 부모의 프로토타입 객체의 프로퍼티를 자신의 것처럼 접근
+
+- 스코프 체이닝
+    - 실행 컨텍스트의 스코프 객체에서 대응되는 프로퍼티를 찾지 못하면 다음 객체로 이동하여 계속 찾는다.
+    
+- 클로저
+    - 이미 생명주기가 끝난 외부 함수의 변수를 참조하는 함수
     
 - 콜백 함수
     - 이벤트가 발생하였을때 이벤트 발생 결과를 함수를 통해 전달하는 방식

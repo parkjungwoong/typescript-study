@@ -76,6 +76,9 @@ hello("ts");
 ```
 gulp
 node dist/main.js
+
+#error TS2583: Cannot find name 'Set'. Do you need to change your target library? Try changing the `lib` compiler option to es2015 or later.
+#에러 발생시 npm i @types/node 명령어 실행 
 ```
 
 ## 브라우저 실행
