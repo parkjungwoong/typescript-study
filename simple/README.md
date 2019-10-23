@@ -1,13 +1,18 @@
 # 기본기 연습
 
+## 목차
+- [javascript](#javascript-특정-정리)
+- [typescript](#typescript-특정-정리)
+
 ## ts -> js 변경 방법
 ```
 tsc 파일명
 ```
 
 ## 참고링크
-- [javascript쿡북](https://helloworldjavascript.net/)
-- [typescript쿡북](https://typescript-kr.github.io/)
+- [Mozilla 자바스크립트 기초 가이드](https://developer.mozilla.org/ko/docs/Learn/JavaScript/First_steps)
+- [javascript 기초, 심화 가이드](https://helloworldjavascript.net/)
+- [typescript 기초 문법](https://typescript-kr.github.io/)
 - [IIFE 표현식](http://chanlee.github.io/2014/01/11/understand-javascript-iife/)
 
 ## javascript 특정 정리
@@ -179,3 +184,5 @@ function sum(num1, num2)
 - 콜백 함수
     - 이벤트가 발생하였을때 이벤트 발생 결과를 함수를 통해 전달하는 방식
     - 자바스크립트에서는 대표적으로 이벤트 핸들러 처리, window.onload와 같은 메소드
+    
+## typescript 특정 정리
